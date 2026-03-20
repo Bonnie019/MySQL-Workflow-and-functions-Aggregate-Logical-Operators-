@@ -1,3 +1,7 @@
+CREATE TABLE bonniedb.employee_salary
+ (first_name VARCHAR(50), last_name VARCHAR(50), 
+ department VARCHAR(25), salary INT);
+ 
 INSERT INTO bonniedb.employee_salary
  (first_name, last_name, department, salary)
  VALUES
@@ -14,12 +18,8 @@ INSERT INTO bonniedb.employee_salary
  
  SELECT* 
  FROM bonniedb.employee_salary;
- 
- 
- CREATE TABLE bonniedb.employee_demographics
- (first_name VARCHAR(50), last_name VARCHAR(40),
- birth_date DATE, age INT, gender VARCHAR(20));
- 
+
+
 SELECT* 
  FROM bonniedb.employee_salary
  WHERE first_name = 'Anne'
@@ -35,8 +35,25 @@ SELECT*
  WHERE salary <= '85000'
  ;
  
- 
- SELECT* 
+  CREATE TABLE bonniedb.employee_demographics
+ (first_name VARCHAR(50), last_name VARCHAR(40),
+ birth_date DATE, age INT, gender VARCHAR(20));
+
+INSERT INTO bonniedb.employee_demographics
+ (first_name, last_name, birth_date, age, gender)
+ VALUES
+('John', 'David', '1990-06-03', 36, 'Male'), 
+ ('Sarah', 'brown', '2000-09-23', 26, 'Female'), 
+ ('Nathan', 'white', '2001-07-02', 25, 'Male'), 
+ ('Simon', 'Ngaruiya', '1978-05-30', 48, 'Male'), 
+ ('Anne', 'Christian', '1998-10-06', 28, 'Female'), 
+ ('John', 'Njue', '2002-03-05', 24, 'Male'), 
+ ('Cate', 'Fitcher', '1988-04-12', 38, 'Female'), 
+ ('Margaret', 'Precious', '1999-12-03', 27, 'Female'), 
+ ('Charles', 'George', '1995-06-10', 31, 'Male'), 
+ ('Peter', 'Higggins', '1992-09-10', 34, 'Male');
+
+SELECT* 
  FROM bonniedb.employee_demographics
  WHERE birth_date > '2000-01-01'
  ;
@@ -86,3 +103,9 @@ SELECT*
  FROM bonniedb.employee_salary
  WHERE first_name LIKE 'N__%'
  ;
+
+ -- GROUP BY--
+ Select gender, AVG(age), Min(age), MAX(age), COUNT(age)
+ From employee_demographics
+ Group by gender;
+
